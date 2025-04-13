@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,14 @@ namespace TrendyT.Data.Repository.Repos
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public UnitOfWork(ApplicationDbContext context) { 
+        public UnitOfWork(ApplicationDbContext context, IMapper mapper) { 
             _context = context;
+            _mapper = mapper;   
         }
         private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public IUserRepo UserRepo => new UserRepository(_context);
+        public IUserRepo UserRepo => new UserRepository(_context, _mapper);
         public IAddressRepo AddressRepo => new AddressRepository(_context);
         public IProductRepo ProductRepo =>  new ProductRepository(_context);
 
