@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,7 +85,8 @@ namespace TrendyT.Services.ServiceClasses
             ApiResponse apiResponse = new ApiResponse();
             ApplicationUser uu = _mapper.Map<ApplicationUser>(u);
 
-            await _uow.UserRepo.UpdateUser(uu);
+            uu.Address.User = null;
+            var rr=await _uow.UserRepo.UpdateUser(uu);
             string isSaved = await _uow.save();
             bool tryParseResult;
             apiResponse = (Boolean.TryParse(isSaved, out tryParseResult) && tryParseResult) ? new ApiResponse(uu.Id.ToString(), HttpStatusCode.Created.ToString(), true) : new ApiResponse(null, isSaved, false);

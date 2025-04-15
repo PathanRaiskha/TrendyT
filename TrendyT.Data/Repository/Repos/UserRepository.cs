@@ -73,6 +73,7 @@ namespace TrendyT.Data.Repository.Repos
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     Email = user.Email,
+                    Password=user.PasswordHash,
                     Role = role.Name,
                     Gender = user.Gender,
                     MobileNumber = user.MobileNumber,
@@ -104,6 +105,7 @@ namespace TrendyT.Data.Repository.Repos
                              FirstName = user.FirstName,
                              LastName = user.LastName,
                              Email = user.Email,
+                             Password = user.PasswordHash,
                              Role = role.Name,
                              Gender = user.Gender,
                              MobileNumber = user.MobileNumber,
@@ -131,9 +133,39 @@ namespace TrendyT.Data.Repository.Repos
         }
         public async Task<bool> UpdateUser(ApplicationUser user)
         {
-            
-             _context.Users.Update(user);
-            return true;
+
+            try
+            {
+                var user1 = await _context.Users.FindAsync(user.Id);
+                
+                if (user1 == null)
+                {
+                    return false;
+                }
+               
+
+                user1.FirstName= user.FirstName;    
+                user1.LastName= user.LastName;  
+                user1.Email= user.Email;    
+                user1.Gender= user.Gender;  
+                user1.MobileNumber= user.MobileNumber;
+                user1.AddressId= user.AddressId;
+
+
+                user1.Address = user.Address; 
+
+
+                _context.Users.Update(user1);
+                
+                //var result = await _context.SaveChangesAsync();
+                //return result > 0;
+            }
+            catch (Exception ee)
+            {
+                return false ;
+            }
+
+             return true;
         }
     }
 }
