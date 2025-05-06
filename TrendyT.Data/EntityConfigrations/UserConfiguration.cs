@@ -16,11 +16,7 @@ namespace TrendyT.Data.EntityConfigrations
         {
             builder.HasKey(x => x.Id);
 
-            //Mapping
-            builder.HasMany<Order>(x => x.Orders)
-                .WithOne(x => x.OrderedUser)
-                .HasForeignKey(x => x.OrderedUserId);
-                
+           
            
         }
     }

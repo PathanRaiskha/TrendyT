@@ -87,9 +87,42 @@ namespace TrendyT.Data.Repository.Repos
         }
         public async Task<bool> UpdateProduct(Product product)
         {
+            try
+            {
+                var user1 = await _context.Products.FindAsync(product.Id);
 
-            _context.Products.Update(product);
+                if (user1 == null)
+                {
+                    return false;
+                }
+
+
+                user1.Id = product.Id;
+                user1.Quantity = product.Quantity;
+                user1.Price = product.Price;
+                user1.Name = product.Name;
+                user1.Description = product.Description;
+                user1.IsCustomizable = product.IsCustomizable;
+
+
+                user1.ProductDetail = product.ProductDetail;
+
+
+                _context.Products.Update(user1);
+
+                //var result = await _context.SaveChangesAsync();
+                //return result > 0;
+            }
+            catch (Exception ee)
+            {
+                return false;
+            }
+
             return true;
+
+
+            //_context.Products.Update(product);
+            //return true;
         }
 
     }

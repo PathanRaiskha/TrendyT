@@ -20,6 +20,7 @@ namespace TrendyT.Data.Repository.Repos
         public IUserRepo UserRepo => new UserRepository(_context, _mapper);
         public IAddressRepo AddressRepo => new AddressRepository(_context);
         public IProductRepo ProductRepo =>  new ProductRepository(_context);
+       public IorderRepo OrderRepo => new OrderRepository(_context);
 
         public async Task<string> save()
         {

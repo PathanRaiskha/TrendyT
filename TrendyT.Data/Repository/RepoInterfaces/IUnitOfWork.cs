@@ -8,8 +8,11 @@ namespace TrendyT.Data.Repository.RepoInterfaces
 {
     public interface IUnitOfWork
     {
+       
         IUserRepo UserRepo { get; }
         IProductRepo ProductRepo { get; }
+        IorderRepo OrderRepo { get; }
+        
         Task<string> save();
     }
 }

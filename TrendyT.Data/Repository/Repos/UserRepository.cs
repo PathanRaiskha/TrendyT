@@ -126,10 +126,18 @@ namespace TrendyT.Data.Repository.Repos
 
         public async Task<bool> DeleteUser(string userId)
         {
-            var User= await _context.Users.FirstOrDefaultAsync(x=>x.Id.ToString()==userId);
-            _context.Users.Remove(User);
-            var result = await _context.SaveChangesAsync();
-            return result>0;
+            try
+            {
+                var User1 = await _context.Users.FirstOrDefaultAsync(x=>x.Id==userId);
+                _context.Users.Remove(User1);
+                var result = await _context.SaveChangesAsync();
+                return result > 0;
+            }catch(Exception ex)
+            {
+
+            }
+            return false;
+           
         }
         public async Task<bool> UpdateUser(ApplicationUser user)
         {

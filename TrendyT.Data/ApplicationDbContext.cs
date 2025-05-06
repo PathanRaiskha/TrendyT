@@ -22,6 +22,7 @@ namespace TrendyT.Data
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductDetail> ProductDetails { get; set; }
         public virtual DbSet<OrderedProducts> OrderedProducts { get; set; }
+       
         public virtual DbSet<Review> Reviews { get; set; }
 
         

@@ -18,6 +18,8 @@ namespace TrendyT.Services
         {
             services.AddTransient<IUserService,UserService>();
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IOrderServices,OrderService>();
+            
 
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
         }

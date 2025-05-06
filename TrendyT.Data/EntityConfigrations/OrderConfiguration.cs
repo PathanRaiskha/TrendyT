@@ -8,7 +8,22 @@ namespace TrendyT.Data.EntityConfigrations
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
+           
+        
+            
+        
+                builder.HasKey(x => new { x.Id  });
+
+                builder.HasOne<ApplicationUser>(x => x.OrderedUser)
+                    .WithMany(x => x.Orders )
+                    .HasForeignKey(x => x.OrderedUserId);
+
+               
+
+
             
         }
+
     }
 }
+
