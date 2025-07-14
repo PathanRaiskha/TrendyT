@@ -14,6 +14,7 @@ namespace TrendyT.DTO
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsCustomizable { get; set; }
+       
 
         //Navigation Prop
         public virtual ProductDetailDTO ProductDetail { get; set; }

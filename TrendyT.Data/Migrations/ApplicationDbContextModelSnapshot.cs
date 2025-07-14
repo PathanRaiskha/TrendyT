@@ -51,14 +51,14 @@ namespace TrendyT.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2b859e7c-dbe7-48bb-b6cd-f4ae7ff305e1",
+                            Id = "36abf1c3-f3e3-491c-b1e8-f93b28aa31d8",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "9a1228a1-5391-4a5f-aa58-658965346180",
+                            Id = "9e1c4cbc-818b-480c-b823-ba94f0795062",
                             ConcurrencyStamp = "2",
                             Name = "Customer",
                             NormalizedName = "Customer"

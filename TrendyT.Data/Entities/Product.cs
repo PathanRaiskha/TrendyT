@@ -18,6 +18,7 @@ namespace TrendyT.Data.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsCustomizable { get; set; }
+       
 
         //Navigation Prop
         public virtual ProductDetail ProductDetail { get; set; }
